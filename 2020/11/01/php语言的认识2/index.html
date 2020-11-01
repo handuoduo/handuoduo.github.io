@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PHP语言 一.if与switch 1.if仅当指定条件成立时执行代码if(条件）{代码}if…else有两个分支。2.if…else if…else在若干条件之一成立时执行一个代码块。类似于叠加条件，若正向不成立时反向成立，在与现行条件结合。3.switch 有选择地执行若干代码之一。 12345678910111213&lt;?phpswitch(n)&amp;#123;case label1:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2020/11/01/php%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AE%A4%E8%AF%862/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PHP语言 一.if与switch 1.if仅当指定条件成立时执行代码if(条件）{代码}if…else有两个分支。2.if…else if…else在若干条件之一成立时执行一个代码块。类似于叠加条件，若正向不成立时反向成立，在与现行条件结合。3.switch 有选择地执行若干代码之一。 12345678910111213&lt;?phpswitch(n)&amp;#123;case label1:">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-01T15:42:33.183Z">
+<meta property="article:modified_time" content="2020-11-01T15:42:38.925Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-php语言的认识2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/01/php%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AE%A4%E8%AF%862/" class="article-date">
+  <time datetime="2020-11-01T15:42:33.183Z" itemprop="datePublished">2020-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PHP语言</p>
+<p>一.if与switch</p>
+<p><strong>1.if</strong><br>仅当指定条件成立时执行代码<br>if(条件）<br>{<br>代码<br>}<br>if…else有两个分支。<br><strong>2.if…else if…else</strong>在若干条件之一成立时执行一个代码块。类似于叠加条件，若正向不成立时反向成立，在与现行条件结合。<br><strong>3.switch</strong> 有选择地执行若干代码之一。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">switch</span>(n)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">case</span> label1:</span><br><span class="line">         n=label1;</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> label2:</span><br><span class="line">         n=label2;</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">         代码<span class="number">3</span>；</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>先将简单表达式n进行一次计算，将表达式的值与结构中每个case的值进行比较。用break来阻止跳入下一个case中继续执行。default语句用于不存在匹配时执行。</p>
+<p>二.函数学习</p>
+<p><strong>1.数组</strong><br>（1）array()函数用于创建数组。数组类型包括数值数组，关联数组等。且有自动分配ID键（从0开始）与人工分配ID键（各自定义不同的值）之分。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cars=<span class="keyword">array</span>(<span class="string">&quot;v&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;t&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$cars[<span class="number">0</span>]=<span class="string">&quot;1&quot;</span>;</span><br><span class="line">$cars[<span class="number">1</span>&#125;=<span class="string">&quot;2&quot;</span>;</span><br><span class="line">$cars[<span class="number">2</span>]=<span class="string">&quot;3&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>(2)count()获取数组长度，即表明数组中一共有几个空房间。<br>(3)关联数组：使用我分配数组的指定的键的数组<br>两种分配方式：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$age=<span class="keyword">array</span>(<span class="string">&quot;peter&quot;</span>=&gt;<span class="string">&quot;35&quot;</span>,<span class="string">&quot;ben&quot;</span>=&gt;<span class="string">&quot;37&quot;</span>,<span class="string">&quot;joe&quot;</span>=&gt;<span class="string">&quot;43&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$age[<span class="string">&#x27;peter&#x27;</span>]=<span class="string">&quot;35&quot;</span>;</span><br><span class="line"><span class="comment">//要知道此时加上的标点为单引号</span></span><br></pre></td></tr></table></figure>
+<p>(3)遍历关联数组：可用foreach循环(for each)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>($age <span class="keyword">as</span> $x =&gt;$x_value)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;key=&quot;</span>.$x.<span class="string">&quot;,value=&quot;</span>.$x_value;</span><br><span class="line"><span class="keyword">echo</span><span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>$x_value</code>为变量<code>$x</code>的值。</p>
+<p>有见到的函数为：<code>array_change_key_case()</code>表示其键的大写或小写的数组。</p>
+<p>三.数组排序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$cars=<span class="keyword">array</span>(<span class="string">&quot;v&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;t&quot;</span>);</span><br><span class="line">sort($cars);</span><br><span class="line">print_r($cars);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>print_r()此时用于输出数组。<br>但我对于为什么不用echo产生了疑惑。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">&quot;i like&quot;</span>.$cars[<span class="number">0</span>].<span class="string">&quot;,&quot;</span>.$cars[<span class="number">1</span>].<span class="string">&quot;and&quot;</span>.$cars[<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
+<p>在此处明明也可以用echo来输出数组。<br>echo / print与print_r与var_dump都具有输出功能。但echo与print是语言结构，不能作为表达式的一部分。而后两者都是函数，其区别是var_dump()返回表达式的类型与值，而print()仅返回效果。var_dump更便于阅读。<br>echo用于输出数值变量或字符串,但使用echo来输出引用变量时，如数组，仅输出数组的名字；而print_r(expression)输出一个数组，实际上expression的类型可为数组变量和引用变量。如果给出的是string,integer,或float将输出变量值本身；如果给出array将按一定格式显示键和元素。object与数组类似。</p>
+<p>升序与降序<br>对于普通数组：sort()升序；rsort()降序<br>对于关联数组：<br>                        对值：asort()升序；arsort()降序<br>                        对键：ksort()升序；krsort()降序</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/01/php%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AE%A4%E8%AF%862/" data-id="ckgzaassn0000mktfbwr8g384" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/01/%E5%AF%B9%E4%BA%8Ephp%E8%AF%AD%E6%B3%95%E7%9A%84%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/01/php%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AE%A4%E8%AF%862/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/01/%E5%AF%B9%E4%BA%8Ephp%E8%AF%AD%E6%B3%95%E7%9A%84%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/26/%E5%AF%B9%E4%BA%8E%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD%E7%9A%84%E7%B2%97%E6%B5%85%E8%AE%A4%E8%AF%862/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/26/%E5%AF%B9%E4%BA%8E%E6%9C%AF%E8%AF%AD%E7%9A%84%E7%B2%97%E6%B5%85%E8%AE%A4%E8%AF%86/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/17/%E5%AF%B9%E4%BA%8EHTML%E7%9A%84%E7%B2%97%E6%B5%85%E8%AE%A4%E8%AF%86/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
