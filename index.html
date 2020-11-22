@@ -64,6 +64,88 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/22/mysql%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2020-11-22T09:12:49.021Z" itemprop="datePublished">2020-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">myDB</span>;</span><br><span class="line"></span><br><span class="line">CREATE TABLE MyGuests (</span><br><span class="line">    id <span class="keyword">INT</span>(<span class="number">6</span>) UNSIGNED AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">    firstname VARCHAR(<span class="number">30</span>) NOT <span class="literal">NULL</span>,</span><br><span class="line">    lastname VARCHAR(<span class="number">30</span>) NOT <span class="literal">NULL</span>,</span><br><span class="line">    email VARCHAR(<span class="number">50</span>),</span><br><span class="line">    reg_date TIMESTAMP</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>NOT NULL - 每一行都必须含有值（不能为空），null 值是不允许的。<br>DEFAULT value - 设置默认值<br>UNSIGNED - 使用无符号数值类型，0 及正数<br>AUTO INCREMENT - 设置 MySQL 字段的值在新增记录时每次自动增长 1<br>PRIMARY KEY - 设置数据表中每条记录的唯一标识。 通常列的 PRIMARY KEY 设置为 ID 数值，与 AUTO_INCREMENT 一起使用。<br>每个表都应该有一个主键(本列为 “id” 列)，主键必须包含唯一的值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$servername = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">$username = <span class="string">&quot;username&quot;</span>;</span><br><span class="line">$password = <span class="string">&quot;password&quot;</span>;</span><br><span class="line">$dbname = <span class="string">&quot;myDB&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建连接</span></span><br><span class="line">$conn = <span class="keyword">new</span> mysqli($servername, $username, $password, $dbname);</span><br><span class="line"><span class="comment">// 检测连接</span></span><br><span class="line"><span class="keyword">if</span> ($conn-&gt;connect_error) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;连接失败: &quot;</span> . $conn-&gt;connect_error);</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 使用 sql 创建数据表</span></span><br><span class="line">$sql = <span class="string">&quot;CREATE TABLE MyGuests (</span></span><br><span class="line"><span class="string">id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, </span></span><br><span class="line"><span class="string">firstname VARCHAR(30) NOT NULL,</span></span><br><span class="line"><span class="string">lastname VARCHAR(30) NOT NULL,</span></span><br><span class="line"><span class="string">email VARCHAR(50),</span></span><br><span class="line"><span class="string">reg_date TIMESTAMP</span></span><br><span class="line"><span class="string">)&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> ($conn-&gt;query($sql) === <span class="literal">TRUE</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Table MyGuests created successfully&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;创建数据表错误: &quot;</span> . $conn-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">$conn-&gt;close();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$servername = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">$username = <span class="string">&quot;username&quot;</span>;</span><br><span class="line">$password = <span class="string">&quot;password&quot;</span>;</span><br><span class="line">$dbname = <span class="string">&quot;myDB&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建连接</span></span><br><span class="line">$conn = mysqli_connect($servername, $username, $password, $dbname);</span><br><span class="line"><span class="comment">// 检测连接</span></span><br><span class="line"><span class="keyword">if</span> (!$conn) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;连接失败: &quot;</span> . mysqli_connect_error());</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 使用 sql 创建数据表</span></span><br><span class="line">$sql = <span class="string">&quot;CREATE TABLE MyGuests (</span></span><br><span class="line"><span class="string">id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, </span></span><br><span class="line"><span class="string">firstname VARCHAR(30) NOT NULL,</span></span><br><span class="line"><span class="string">lastname VARCHAR(30) NOT NULL,</span></span><br><span class="line"><span class="string">email VARCHAR(50),</span></span><br><span class="line"><span class="string">reg_date TIMESTAMP</span></span><br><span class="line"><span class="string">)&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> (mysqli_query($conn, $sql)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;数据表 MyGuests 创建成功&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;创建数据表错误: &quot;</span> . mysqli_error($conn);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">mysqli_close($conn);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>在创建完数据库和表后，我们可以向表中添加数据。</p>
+<p>以下为一些语法规则：</p>
+<p>PHP 中 SQL 查询语句必须使用引号<br>在 SQL 查询语句中的字符串值必须加引号<br>数值的值不需要引号<br>NULL 值不需要引号</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 语句通常用于向 MySQL 表添加新的记录：</span><br><span class="line"></span><br><span class="line">INSERT INTO table_name (column1, column2, column3,...)</span><br><span class="line">VALUES (value1, value2, value3,...)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$servername = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">$username = <span class="string">&quot;username&quot;</span>;</span><br><span class="line">$password = <span class="string">&quot;password&quot;</span>;</span><br><span class="line">$dbname = <span class="string">&quot;myDB&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建连接</span></span><br><span class="line">$conn = <span class="keyword">new</span> mysqli($servername, $username, $password, $dbname);</span><br><span class="line"><span class="comment">// 检测连接</span></span><br><span class="line"><span class="keyword">if</span> ($conn-&gt;connect_error) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;连接失败: &quot;</span> . $conn-&gt;connect_error);</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">$sql = <span class="string">&quot;INSERT INTO MyGuests (firstname, lastname, email)</span></span><br><span class="line"><span class="string">VALUES (&#x27;John&#x27;, &#x27;Doe&#x27;, &#x27;john@example.com&#x27;)&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> ($conn-&gt;query($sql) === <span class="literal">TRUE</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;新记录插入成功&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Error: &quot;</span> . $sql . <span class="string">&quot;&lt;br&gt;&quot;</span> . $conn-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">$conn-&gt;close();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>因为我写代码的习惯是<code>&quot; = &quot;</code>两边都加上空格 ， 但是在这里 <code>dbname = $dbname</code> 的等号两边却不可以存在空格</p>
+<p>所以正确的写法应该是 <code>dbname=$dbname</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$sql = <span class="string">&quot;INSERT INTO MyGuests (firstname, lastname, email)</span></span><br><span class="line"><span class="string">VALUES (&#x27;John&#x27;, &#x27;Doe&#x27;, &#x27;john@example.com&#x27;);&quot;</span>;</span><br><span class="line">$sql .= <span class="string">&quot;INSERT INTO MyGuests (firstname, lastname, email)</span></span><br><span class="line"><span class="string">VALUES (&#x27;Mary&#x27;, &#x27;Moe&#x27;, &#x27;mary@example.com&#x27;);&quot;</span>;</span><br><span class="line">$sql .= <span class="string">&quot;INSERT INTO MyGuests (firstname, lastname, email)</span></span><br><span class="line"><span class="string">VALUES (&#x27;Julie&#x27;, &#x27;Dooley&#x27;, &#x27;julie@example.com&#x27;)&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>注意，每个SQL语句必须用分号隔开。而且记住在<code>$sql</code>在第二行出现时要加上<code>.</code></p>
+<p>我们可以预处理语句及绑定参数。</p>
+<p>mysql 扩展可以不带数据发送语句或查询到mysql数据库。 你可以向列关联或 “绑定” 变量。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$servername = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line">$username = <span class="string">&quot;username&quot;</span>;</span><br><span class="line">$password = <span class="string">&quot;password&quot;</span>;</span><br><span class="line">$dbname = <span class="string">&quot;myDB&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建连接</span></span><br><span class="line">$conn = <span class="keyword">new</span> mysqli($servername, $username, $password, $dbname);</span><br><span class="line"><span class="comment">// 检测连接</span></span><br><span class="line"><span class="keyword">if</span> ($conn-&gt;connect_error) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;连接失败: &quot;</span> . $conn-&gt;connect_error);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $sql = <span class="string">&quot;INSERT INTO MyGuests(firstname, lastname, email)  VALUES(?, ?, ?)&quot;</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 为 mysqli_stmt_prepare() 初始化 statement 对象</span></span><br><span class="line">    $stmt = mysqli_stmt_init($conn);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>mysqli_stmt_init() 函数初始化声明并返回 mysqli_stmt_prepare() 使用的对象。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_stmt_init(connection);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">初始化声明并返回 mysqli_stmt_prepare() 使用的对象：</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="comment">// 假定数据库用户名：root，密码：123456，数据库：RUNOOB </span></span><br><span class="line">$con=mysqli_connect(<span class="string">&quot;localhost&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;123456&quot;</span>,<span class="string">&quot;RUNOOB&quot;</span>); </span><br><span class="line"><span class="keyword">if</span> (mysqli_connect_errno($con)) </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;连接 MySQL 失败: &quot;</span> . mysqli_connect_error(); </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// 修改数据库连接字符集为 utf8</span></span><br><span class="line">mysqli_set_charset($con,<span class="string">&quot;utf8&quot;</span>);</span><br><span class="line"></span><br><span class="line">$country=<span class="string">&quot;CN&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建预处理语句</span></span><br><span class="line">$stmt=mysqli_stmt_init($con);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (mysqli_stmt_prepare($stmt,<span class="string">&quot;SELECT name FROM websites WHERE country=?&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 绑定参数</span></span><br><span class="line">    mysqli_stmt_bind_param($stmt,<span class="string">&quot;s&quot;</span>,$country);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 执行查询</span></span><br><span class="line">    mysqli_stmt_execute($stmt);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 绑定结果变量</span></span><br><span class="line">    mysqli_stmt_bind_result($stmt,$name);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取值</span></span><br><span class="line">    mysqli_stmt_fetch($stmt);</span><br><span class="line">    </span><br><span class="line">    printf(<span class="string">&quot;%s 国家的网站为：%s&quot;</span>,$country,$name);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 关闭预处理语句</span></span><br><span class="line">    mysqli_stmt_close($stmt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mysqli_close($con);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>mysqli_stmt_bind_param - 将变量绑定到准备好的语句作为参数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_stmt_bind_param ( mysqli_stmt $stmt , <span class="keyword">string</span> $types , mixed &amp;$var1 [, mixed &amp;$... ] )</span><br></pre></td></tr></table></figure>
+<p>stmt    是由 mysqli_stmt_init() 返回的 statement 标识。</p>
+<p>types是一个包含一个或多个字符的字符串，这些字符指定相应绑定变量的类型：<br>i - 对应的变量具有整数类型<br>d - 对应变量的类型为double<br>s - 对应的变量具有字符串类型<br>b - 对应的变量是blob，将以数据包形式发送<br>在传递给 mysqli_prepare() 的SQL语句中为参数标记绑定变量。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$stmt = mysqli_prepare($link, <span class="string">&quot;INSERT INTO CountryLanguage VALUES (?, ?, ?, ?)&quot;</span>);</span><br><span class="line">mysqli_stmt_bind_param($stmt, <span class="string">&#x27;sssd&#x27;</span>, $code, $language, $official, $percent);</span><br><span class="line">$code = <span class="string">&#x27;DEU&#x27;</span>;</span><br><span class="line">$language = <span class="string">&#x27;Bavarian&#x27;</span>;</span><br><span class="line">$official = <span class="string">&quot;F&quot;</span>;</span><br><span class="line">$percent = <span class="number">11.2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意： 如果变量的数据大小超过最大值。 如果允许数据包大小（max_allowed_packet），则必须在类型中指定b并使用mysqli_stmt_send_long_data()以数据包形式发送数据。<br>注意： 将mysqli_stmt_bind_param()与call_user_func_array()结合使用时必须小心。请注意，mysqli_stmt_bind_param()要求参数通过引用传递，而call_user_func_array()可以接受可以表示引用或值的变量列表作为参数。</p>
+<p>执行以前使用 mysqli_prepare() 函数准备的查询。 执行后，任何存在的参数标记将自动替换为适当的数据。 如果该语句是UPDATE，DELETE或INSERT，则可以使用 mysqli_stmt_affected_rows() 函数确定受影响的行总数。 同样，如果查询产生结果集，则使用 mysqli_stmt_fetch() 函数。<br>注意： 使用mysqli_stmt_execute()时，必须在执行任何其他查询之前使用mysqli_stmt_fetch()函数来获取数据。</p>
+<hr>
+<p>预处理：创建 SQL 语句模板并发送到数据库。预留的值使用参数 “?” 标记 。例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO MyGuests (firstname, lastname, email) VALUES(?, ?, ?)</span><br></pre></td></tr></table></figure>
+
+<p>数据库解析，编译，对SQL语句模板执行查询优化，并存储结果不输出。</p>
+<p>执行：最后，将应用绑定的值传递给参数（”?” 标记），数据库执行语句。应用可以多次执行语句，如果参数的值不一样。</p>
+<p>相比于直接执行SQL语句，预处理语句有两个主要优点：</p>
+<p>预处理语句大大减少了分析时间，只做了一次查询（虽然语句多次执行）。</p>
+<p>绑定参数减少了服务器带宽，你只需要发送查询的参数，而不是整个语句。</p>
+<p>预处理语句针对SQL注入是非常有用的，因为参数值发送后使用不同的协议，保证了数据的合法性。</p>
+<p>SELECT 语句用于从数据表中读取数据:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name(s) <span class="keyword">FROM</span> table_name</span><br></pre></td></tr></table></figure>
+
+<p>我们可以使用 * 号来读取所有数据表中的字段：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * <span class="keyword">FROM</span> table_name</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$sql = <span class="string">&quot;SELECT id, firstname, lastname FROM MyGuests&quot;</span>;</span><br><span class="line">$result = $conn-&gt;query($sql);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> ($result-&gt;num_rows &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 输出数据</span></span><br><span class="line">    <span class="keyword">while</span>($row = $result-&gt;fetch_assoc()) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;id: &quot;</span> . $row[<span class="string">&quot;id&quot;</span>]. <span class="string">&quot; - Name: &quot;</span> . $row[<span class="string">&quot;firstname&quot;</span>]. <span class="string">&quot; &quot;</span> . $row[<span class="string">&quot;lastname&quot;</span>]. <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;0 结果&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">$conn-&gt;close();</span><br></pre></td></tr></table></figure>
+<p>首先，我们设置了 SQL 语句从 MyGuests数据表中读取 id, firstname 和 lastname 三个字段。之后我们使用该 SQL 语句从数据库中取出结果集并赋给复制给变量 $result。</p>
+<p>函数 <code>num_rows()</code> 判断返回的数据。</p>
+<p>如果返回的是多条数据，函数 <code>fetch_assoc()</code> 将结合集放入到关联数组并循环输出。 <code>while()</code> 循环出结果集，并输出 id, firstname 和 lastname 三个字段值。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/22/mysql%E5%AD%A6%E4%B9%A0/" data-id="ckhswmep600008ktffizn4qkz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-查缺补漏" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/16/%E6%9F%A5%E7%BC%BA%E8%A1%A5%E6%BC%8F/" class="article-date">
@@ -462,41 +544,6 @@
 
 
   
-    <article id="post-对于HTML的粗浅认识" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/17/%E5%AF%B9%E4%BA%8EHTML%E7%9A%84%E7%B2%97%E6%B5%85%E8%AE%A4%E8%AF%86/" class="article-date">
-  <time datetime="2020-10-17T15:10:31.772Z" itemprop="datePublished">2020-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>HTML的粗浅学习</strong></p>
-<h1 id="打开新世界的大门！"><a href="#打开新世界的大门！" class="headerlink" title="打开新世界的大门！"></a>打开新世界的大门！</h1><p><strong><em>HTML并不是一种编程语言</em></strong><br>HTML,超文本标记语言，标准通用标记语言下的一个应用。是网页制作必备的工具。</p>
-<h2 id="那么问题来了，编程语言，标记语言与脚本语言是什么？"><a href="#那么问题来了，编程语言，标记语言与脚本语言是什么？" class="headerlink" title="那么问题来了，编程语言，标记语言与脚本语言是什么？"></a>那么问题来了，编程语言，标记语言与脚本语言是什么？</h2><p>1.<strong><em>标记语言</em></strong>。在百度百科中解释为“是一种将文本（Text）以及文本相关的其他信息结合起来，展现出关于文档结构和数据处理细节的电脑文字编码。与文本相关的其他信息（包括例如文本的结构和表示信息等）与原来的文本结合在一起，但是使用标记（markup）进行标识。”其中的文本即你想要在网页里呈现给观众的有效内容，而文本相关的其他信息是指文本的结构和表示信息，例如字体的大小，要不要加粗等等。但“使用标记进行标识”让我疑惑，这有什么用呢？想了想觉得可能是为了浏览器能方便准确地下载打开该文档，利于浏览器将文档渲染并展示给用户。HTML是世界通用的，用于描述一个网页的信息的标记语言。HTML的作用类似与菜单，你选择什么具体有图的菜，再由浏览器也就是厨师做出来让你饱餐一顿。<br>2.<strong><em>脚本语言</em></strong>。“脚本语言是为了缩短传统的编写-编译-链接-运行（edit-compile-link-run）过程而创建的计算机编程语言。它的命名起源于一个脚本“screenplay”，每次运行都会使对话框逐字重复。早期的脚本语言经常被称为批量处理语言或工作控制语言。”<br>一个脚本通常是解释运行而非编译。脚本语言是一种解释性的语言，不需要编译就能直接运行，有解释器负责解释，省去被编译的时间，大大提高了运行速度，且能够随时部署。以文本形式存在，类似一种命令，有点类似于你造了个框架，然后用这个框架来理解其他人搭建的内容。脚本语言通常都有简单、易学、易用的特性，目的就是希望能让程序员快速完成程序的编写工作。脚本语言通常不是“通用”语言，但能够根据专门的应用来调整。<br>3.<strong><em>编程语言</em></strong>。编译型语言：程序在执行之前需要一个专门的编译过程，把程序编译成 为机器语言的文件，运行时不需要重新翻译，直接使用编译的结果就行了。程序执行效率高，依赖编译器，跨平台性差一些。<br>4.<strong><em>注意</em></strong>：标记语言不用于向计算机发出指令，常用于格式化和链接。编程语言有逻辑和行为能力，而标记语言是用来被读取的，常用于格式化和链接。</p>
-<h2 id="标记语言是一套标记标签"><a href="#标记语言是一套标记标签" class="headerlink" title="标记语言是一套标记标签"></a>标记语言是一套标记标签</h2><h3 id="HTML使用标记标签来描述网页"><a href="#HTML使用标记标签来描述网页" class="headerlink" title="HTML使用标记标签来描述网页"></a>HTML使用标记标签来描述网页</h3><p>HTML文档也叫做web页面。<br><strong>1.HMTL标签</strong>：由尖括号包围的关键词，比如<code>&lt;hmtl&gt;</code>;需要特别注意的是，标签总是成双成对出现，像套娃，一套有一套地镶嵌，总有上壳和下壳。而表述的内容通常加在中间。注意，只有<code>&lt;body&gt;*****&lt;/body&gt;</code>中镶嵌的内容才会在浏览器中被用户浏览。<br><strong>2.HMTL元素</strong>  ：标题，通过<code>&lt;h1&gt;-&lt;h6&gt; </code>标签定义的；段落，通过<code>&lt;p&gt;</code>;链接，通过<code>&lt;a href=&quot;网址”&gt;-&lt;/a&gt;</code>;图像通过标签<code>&lt;img&gt;</code>;<br><strong>3.使用小写</strong>！<br><strong>4.大致格式</strong>：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>*******<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<pre><code>
-
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/17/%E5%AF%B9%E4%BA%8EHTML%E7%9A%84%E7%B2%97%E6%B5%85%E8%AE%A4%E8%AF%86/" data-id="ckgdtpu0o000094tf4pxpfb28" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -533,6 +580,10 @@
       <ul>
         
           <li>
+            <a href="/2020/11/22/mysql%E5%AD%A6%E4%B9%A0/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/16/%E6%9F%A5%E7%BC%BA%E8%A1%A5%E6%BC%8F/">(no title)</a>
           </li>
         
@@ -546,10 +597,6 @@
         
           <li>
             <a href="/2020/11/08/MySQL%E5%88%9D%E6%8E%A2/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/08/PHP%E7%9A%84%E8%AE%A4%E8%AF%863/">(no title)</a>
           </li>
         
       </ul>
