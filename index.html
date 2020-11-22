@@ -64,6 +64,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/22/mysql/" class="article-date">
+  <time datetime="2020-11-22T09:55:51.400Z" itemprop="datePublished">2020-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>WHERE 子句用于过滤记录，即用于提取满足指定标准的的记录。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line">WHERE column_name operator value</span><br></pre></td></tr></table></figure>
+<p>起搜查的效果</p>
+<p> mysqli_query() 函数用于向 MySQL 连接发送查询或命令。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_fetch_array(result,resulttype);</span><br></pre></td></tr></table></figure>
+<p>返回与读取行匹配的字符串数组。如果结果集中没有更多的行则返回 NULL。</p>
+<p>ORDER BY 关键词用于对记录集中的数据进行排序。</p>
+<p>ORDER BY 关键词默认对记录进行升序排序。</p>
+<p>如果你想降序排序，请使用 DESC 关键字。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line">ORDER BY column_name(s) ASC|DESC</span><br></pre></td></tr></table></figure>
+
+<p>UPDATE 语句用于更新数据库表中已存在的记录。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name</span><br><span class="line">SET column1=value, column2=value2,...</span><br><span class="line">WHERE some_column=some_value</span><br></pre></td></tr></table></figure>
+<p>WHERE 子句规定了哪些记录需要更新。如果您想省去 WHERE 子句，所有的记录都会被更新！</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqli_query($con,<span class="string">&quot;UPDATE Persons SET Age=36</span></span><br><span class="line"><span class="string">WHERE FirstName=&#x27;Peter&#x27; AND LastName=&#x27;Griffin&#x27;&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE <span class="keyword">FROM</span> table_name</span><br><span class="line">WHERE some_column = some_value</span><br></pre></td></tr></table></figure>
+
+<p>注释：请注意 DELETE 语法中的 WHERE 子句。WHERE 子句规定了哪些记录需要删除。如果您想省去 WHERE 子句，所有的记录都会被删除！</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_query($con,<span class="string">&quot;DELETE FROM Persons WHERE LastName=&#x27;Griffin&#x27;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$conn=odbc_connect(<span class="string">&#x27;northwind&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">$sql=<span class="string">&quot;SELECT * FROM customers&quot;</span>;</span><br><span class="line">$rs=odbc_exec($conn,$sql);</span><br></pre></td></tr></table></figure>
+<p>odbc_fetch_row() 函数用于从结果集中返回记录。如果能够返回行，则函数返回 true，否则返回 false。</p>
+<p>该函数有两个参数：ODBC 结果标识符和可选的行号：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">odbc_fetch_row($rs)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/22/mysql/" data-id="ckhsy5ksz0000wotf7e1970il" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql学习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/22/mysql%E5%AD%A6%E4%B9%A0/" class="article-date">
@@ -516,34 +568,6 @@
 
 
   
-    <article id="post-对于术语的粗浅认识" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/26/%E5%AF%B9%E4%BA%8E%E6%9C%AF%E8%AF%AD%E7%9A%84%E7%B2%97%E6%B5%85%E8%AE%A4%E8%AF%86/" class="article-date">
-  <time datetime="2020-10-25T16:26:04.804Z" itemprop="datePublished">2020-10-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="对于基本术语的认识"><a href="#对于基本术语的认识" class="headerlink" title="对于基本术语的认识"></a><strong>对于基本术语的认识</strong></h2><p>基于各种资料，本人菜鸡希望大佬能来指导！</p>
-<p><strong>一.变量的作用域</strong>:是指变量有效性的范围，就是用户自定义的变量可以使用的代码范围；它与变量定义的位置密切相关。作用域是从空间这个角度来描述变量的，按照作用域的不同，变量可分为局部变量和全局变量。<br><strong>1</strong>.局部变量<br>局部变量是在函数（或代码块）内部定义的变量，也称为内部变量，局部变量只能在定义它的函数（或代码块）内被访问和使用，其他函数均不能使用。<br>局部变量的作用域，限于说明它的代码块内：从说明的地方开始至所在的代码块结束， 离开该函数后再使用这种变量是非法的。就像是只配对一个房间门的钥匙，其他的房门都打不开。就像是在不同的部门工作，互不干涉，只在自己的工作领域内工作，不对其他指手画脚。<br><strong>2</strong>.全局变量<br>与局部变量不同，像是共同纲领一般的被全局承认的存在。在所有的函数中可使用。<br><strong>二.形参和实参</strong><br>实参(argument)：<br>  全称为”实际参数”是在调用时传递给函数的参数. 实参可以是常量、变量、表达式、函数等， 无论实参是何种类型的量，在进行函数调用时，它们都必须具有确定的值， 以便把这些值传送给形参。 因此应预先用赋值，输入等办法使实参获得确定值。就像是装有信的信封，可以将信转交给另一个信封。<br>形参(parameter)：<br>全称为”形式参数” 由于它不是实际存在变量，所以又称虚拟变量。是在定义函数名和函数体的时候使用的参数,目的是用来接收调用该函数时传入的参数.在调用函数时，实参将赋值给形参。因而，必须注意实参的个数，类型应与形参一一对应，并且实参必须要有确定的值。就像事先准备好的空盒子，等着来装东西。<br><strong>3.形参和实参的区别</strong><br>形参出现在函数定义中，在整个函数体内都可以使用， 离开该函数则不能使用。形参变量只有在被调用时才分配内存单元，在调用结束时， 即刻释放所分配的内存单元。因此，形参只有在函数内部有效。 函数调用结束返回主调函数后则不能再使用该形参变量。<br>实参出现在主调函数中，进入被调函数后，实参变量也不能使用，实参可以是常量、变量、表达式、函数等， 无论实参是何种类型的量，在进行函数调用时，它们都必须具有确定的值， 以便把这些值传送给形参。 因此应预先用赋值，输入等办法使实参获得确定值。<br>所谓主调函数与被调函数就是互不相干的两个盒子，而各个盒子中有个通道，是形参和实参构建的桥梁。<br>形参和实参的功能是作数据传送。发生函数调用时， 主调函数把实参的值传送给被调函数的形参从而实现主调函数向被调函数的数据传送。函数调用中发生的数据传送是单向的。 即只能把实参的值传送给形参，而不能把形参的值反向地传送给实参。 因此在函数调用过程中，形参的值发生改变，而实参中的值不会变化。当形参和实参不是指针类型时，在该函数运行时，形参和实参是不同的变量，他们在内存中位于不同的位置，形参将实参的内容复制一份，在该函数运行结束的时候形参被释放，而实参内容不会改变。而如果函数的参数是指针类型变量,在调用该函数的过程中，传给函数的是实参的地址，在函数体内部使用的也是实参的地址，即使用的就是实参本身。所以在函数体内部可以改变实参的值。.实参和形参在数量上，类型上，顺序上应严格一致， 否则会发生“类型不匹配”的错误。<br><strong>三.内存分配</strong><br>一个由C/C++编译的程序占用的内存分为以下几个部分<br>1、栈区（stack）— 由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。<br>2、堆区（heap）— 由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表。<br>3、全局区（静态区）（static）— 全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域， 未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。程序结束后由系统释放。<br>4、文字常量区 — 常量字符串就是放在这里的，程序结束后由系统释放 。<br>5、程序代码区— 存放函数体的二进制代码。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/26/%E5%AF%B9%E4%BA%8E%E6%9C%AF%E8%AF%AD%E7%9A%84%E7%B2%97%E6%B5%85%E8%AE%A4%E8%AF%86/" data-id="ckgpbsgyu0000wwtf1rjr05di" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -580,6 +604,10 @@
       <ul>
         
           <li>
+            <a href="/2020/11/22/mysql/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/22/mysql%E5%AD%A6%E4%B9%A0/">(no title)</a>
           </li>
         
@@ -593,10 +621,6 @@
         
           <li>
             <a href="/2020/11/09/%E7%94%B1PHP%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9BMySQL%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/08/MySQL%E5%88%9D%E6%8E%A2/">(no title)</a>
           </li>
         
       </ul>
