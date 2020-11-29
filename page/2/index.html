@@ -64,6 +64,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-对于php语法的初步了解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/01/%E5%AF%B9%E4%BA%8Ephp%E8%AF%AD%E6%B3%95%E7%9A%84%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/" class="article-date">
+  <time datetime="2020-11-01T07:19:48.186Z" itemprop="datePublished">2020-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>(PHP语法)<br>php与我们现在学习的c语言有所不同，php是一门弱类型语言，相对于c语言在语法上会相对宽松。典型的例子就是php在变量的定义上更宽松，不需要标明数据类型，在赋值的同时就已经定义了，且自动调整数据类型。<br><strong>我犯的错误</strong><br><strong>1</strong>.<br>(1)经常忘记在末尾加上分号，或是末尾的引号！<br>例如在输入回车的字符时经常忘记加上引号。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$x=<span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mytest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;变量x为：<span class="subst">$x</span>&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">mytest()</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>(2)在定义变量时忘记加上<code>$</code>,或是在调用变量时忘记加上<code>$</code>.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$txt=<span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">$x=<span class="number">5</span>;</span><br><span class="line">$y=<span class="number">10.5</span>;</span><br><span class="line"><span class="keyword">echo</span> $txt;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在调用变量时一定要记住带上<code>$</code>,但是在定义常量时要注意不需要加上<code>$</code>.<br>（3）在函数结束时要注意加上相对应的函数结尾<br>例如若以函数<code>founction mytest()</code>来开头，那么在结尾处要加上<code>mytest()</code>.<br><strong>2.对于相关语法的理解困难点</strong><br>（1）对于变量作用域等问题<br>(i)一个脚本中声明的全局变量时在整个脚本中可见的，但不包括在函数内部。起初对于“全局”，“可见”，“脚本”等概念有理解上的困难。错认为整个脚本包括函数在内，而脚本并不包括函数p。现在知晓在函数内部定义的，只作用于该函数范围内的变量为局部变量。而在函数外定义的变量为全局变量。而在脚本内定义的各个函数互不干扰，在php中函数是独立的作用域，与c语言不同，c语言中的函数是依附在整个文件中且受全局变量的影响，而php中的函数十分霸道，甚至还会抢全局变量的风头，以至于在设定函数内部变量名时一定要注意不能与全局变量重复，不然会覆盖。也不能直接在函数中调用全局变量，在你运用时相当于又重新在函数内定义一个与全局函数同名的变量，又会被覆盖<br>(ii)现在知晓在函数内部创建并被声明为静态的变量无法在函数外部可见，在理解时与常量混淆。这就涉及到对于“静态”与“动态”的理解。静态变量与全局动态变量一样都是静态存储，静态存储就是在定义时就已经配好相应的存储空间且一直保持不变直到程序结束，而相对应的动态存储则是只在使用的时候才分配存储单元，使用完毕马上释放。静态变量最主要的特征是在定义或声明变量时有strtic修饰符。实际上静态变量时常用于嵌套循环。用strtic来是让某函数的某个局部变量在该函数结束后不会被删除，一直保留那块被分配的单元，即在每次调用该函数时，该变量会保留函数上一次被调用时的值，但静态变量并不是全局变量，还是只能在函数内部使用。常量一旦声明全局可见，可在函数内外使用，但仅限于页面中包含的php脚本。且定义常量要用define(),<code>bool define ( string $name , mixed $value , [bool $case_insensitive = false ] )</code> =&gt;<code>define(&quot;GREETING&quot;, &quot;欢迎访问 Runoob.com&quot;, true);  </code>其中最后的ture or false 取决于是否对于大小写敏感。<br>(iii)要在全局和局部建立联系，则需要用到global语句或是添加元素到<code>$GLOBALSA</code>数组。<br>(iiii)有点绕的是对与参数作用域的理解。通过调用代码将值传递给函数的局部变量。像是在全局定义与局部定义下用箱子将需要传递的值进行传递。且定义的参数也要加上<code>$</code>，并填在函数的<code>（）</code>中</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myTest</span>(<span class="params">$x</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> $x;</span><br><span class="line">&#125;</span><br><span class="line">myTest(<span class="number">5</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>3.输出的语句</strong><br>主要是echo 和 print语句。<br>（1）echo或echo()<br>可用于显示字符串，要注意加上单双引号，也可在其中添加HTML元素如：<code>&lt;h1&gt;.........&lt;/h1&gt;</code>或是<code>&lt;p&gt;........&lt;/p&gt;</code>等，但要注意的是在结束标志上要加<code>/</code><br>显示字符串的例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;my first php page&lt;/h1&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span>  <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>显示变量的例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$x=<span class="number">5</span>;y=<span class="number">6</span>;</span><br><span class="line">$z=$x+$y;</span><br><span class="line"><span class="keyword">echo</span> $z;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>(2)print或print()<br>也可以显示字符串，显示变量。但好像很少用。<br>(3)二者区别<br>echo的功能更加强大，能够输出一个或多个字符串，而print只允许输出一个字符串就不够看了。但要注意的是echo虽然输出速度快，但没有返回值，而print有返回值1。<br>4.数据类型：string(字符串），integer(整型），floast(浮点型)，boolean(布尔型），array(数组），odject(对象），null(空值）。其中我比较难理解的是object和null。<br>(1)string:可将任何文本放在单引号和双引号中；<br>(2)integer:至少有一个数字（0-9），不包含逗号或空格，无小数点，可正可负。<br>(3)float:小数或指数形式。值得注意的是2.4e3表示2.4乘以10的3次方；8E-5中的E后面的数字表示几次方。<br>(4)boolean:用于判断，得ture or false。输出为<code>bool(ture)</code>或<code>bool(false)</code>.<br>(5)array:可在一个变量中储存多个值。<br>(6)object:可用于存储数据，但对象必须用class关键字声明类对象。对于类的理解，和object到底是用来做什么的有疑惑。<br>类就是相当于快捷键，把一些方法打包装进类，可以减少代码的重复率。而如果要用到类需要先将其包进来，此过程需要对类进行实例化，也就是创建一个对象，然后位置调用该对象进函数中。其中还会有子承父业的问题。一个父类可以有多个子类，但一个子类却只能继承一个父类。调用的时候，父类为普通类时，对象可以是父类也可以是子类；父类为抽象类时，对象只能为子类。<br>(7)null:要注意的是null是数据类型为null的值。null值表示变量没有值。运用中可用于数据空值和null值的区别判断。可通过设置变量值为null来清空变量数据。<br>例如:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$x=<span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">$x=<span class="literal">null</span>;</span><br><span class="line">var_dump($x);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可得到结果为NULL。</p>
+<p><strong>4.类型比较</strong><br>要注意多了一种新的比较方式。<br>松散比较：使用两个等号 <code>==</code> 比较，只比较值，不比较类型。<br>严格比较：用三个等号 <code>===</code> 比较，除了比较值，也比较类型。<br><strong>5.运算符</strong><br>首先是算数运算符中多了并置还有少见的取整要注意。<br>对于并置<code>.</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$txt1=<span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line">$txt2=<span class="string">&quot;What a nice day!&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> $txt1 . <span class="string">&quot; &quot;</span> . $txt2;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>输出结果为Hello world! What a nice day!<br>且运用了两次并置符。<br>其次是取整：intdiv()，且为向下取整，即取小于该结果的整数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">var_dump(intdiv(<span class="number">10</span>,<span class="number">3</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>输出为int(3)。<br>要注意通常结果都需要用echo输出，只是此处刚好用到函数<code>var_dump()</code>.<br>而对于递增递减用例子更好理解。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$x=<span class="number">10</span>; </span><br><span class="line"><span class="keyword">echo</span> ++$x; <span class="comment">// 输出11</span></span><br><span class="line"> </span><br><span class="line">$y=<span class="number">10</span>; </span><br><span class="line"><span class="keyword">echo</span> $y++; <span class="comment">// 输出10</span></span><br></pre></td></tr></table></figure>
+<p>对于三元：<code>$</code>变量名1=<code>$</code>变量名2<code>?:$</code>变量名3<code>；</code><br>而在多种逻辑运算中要注意顺序！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/01/%E5%AF%B9%E4%BA%8Ephp%E8%AF%AD%E6%B3%95%E7%9A%84%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/" data-id="ckgyso3pt0000vwtf0umk0r9b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-对于基本术语的粗浅认识2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/26/%E5%AF%B9%E4%BA%8E%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD%E7%9A%84%E7%B2%97%E6%B5%85%E8%AE%A4%E8%AF%862/" class="article-date">
@@ -314,6 +360,10 @@
       <ul>
         
           <li>
+            <a href="/2020/11/29/%E5%AF%B9%E4%BA%8Ephp%E7%9A%84%E5%A4%8D%E4%B9%A0/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/29/less-1%E7%9A%84%E5%88%9D%E6%AC%A1%E5%B0%9D%E8%AF%95/">(no title)</a>
           </li>
         
@@ -327,10 +377,6 @@
         
           <li>
             <a href="/2020/11/16/%E6%9F%A5%E7%BC%BA%E8%A1%A5%E6%BC%8F/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/10/MySQL%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/">(no title)</a>
           </li>
         
       </ul>
