@@ -64,6 +64,116 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP的认识3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/08/PHP%E7%9A%84%E8%AE%A4%E8%AF%863/" class="article-date">
+  <time datetime="2020-11-08T07:58:49.927Z" itemprop="datePublished">2020-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PHP<br><strong>命名空间</strong><br>PHP 命名空间可以解决以下两类问题：</p>
+<p>1.用户编写的代码与PHP内部的类/函数/常量或第三方类/函数/常量之间的名字冲突。<br>2.为很长的标识符名称(通常是为了缓解第一类问题而定义的)创建一个别名（或简短）的名称，提高源代码的可读性。<br>定义命名空间。<br>刚开始我认为是在选择的变量等的名字与内部定义的类、函数、常量或第三方类、函数、常量之间的名字有冲突，要开个新地方给这个重名的，这个空间叫命名空间。<br>之后了解到这个东西和封装很像。封装是指隐藏对象的属性和实现细节，仅对外提供公共访问方式,不让外部直接访问实例域。从广义上来说，命名空间是一种封装事物的方法。是建立起不同类型提供了一种将相关的类、函数和常量组合到一起的途径。老实说刚开始老是把命名空间和类还有封装之间的关联混淆。</p>
+<hr>
+<h2 id="我自己的重点"><a href="#我自己的重点" class="headerlink" title="我自己的重点"></a>我自己的重点</h2><p>类与封装：<br>“我们可以把程序按某种规则分成很多‘块’，这些‘块’相当于类。类与类之间可能会有联系，每个类都有一个可变部分(public)和一个不可变部分(private)。我们需要把可变部分和不可变部分分离出来，将不可变的部分暴露给其他类，而将可变的部分隐藏起来，以便于随时可以让它修改。这项工作就是封装。”<br>封装后使使用者的使用难度下降。封装相当于加工，是包装。而类是已经制造好的方便面，在使用的时候调用即可。两个常常一起绑定使用。<br>类与命名空间：<br>一般程序的开发都是有多个人共同开发的，为了防止不同模块的类和函数重名，所以采用命名空间来区分，这样就不怕同名的混乱了。类就是面向对象所特有的，通过类来创建把自然界的事物封装起来来使用。看起来好像对现在没什么用处。</p>
+<hr>
+<p><strong>面向对象</strong><br>对象是一个由信息及对信息进行处理的描述所组成的整体，是对现实世界的抽象。就是说是针对所需的任务目标。在现实世界里我们所面对的事情都是对象，如计算机、电视机、自行车等。<br>对象的主要三个特性：<br>•    对象的行为：可以对 对象施加那些操作，开灯，关灯就是行为。<br>•    对象的形态：当施加那些方法是对象如何响应，颜色，尺寸，外型。<br>•    对象的表示：对象的表示就相当于身份证，具体区分在相同的行为与状态下有什么不同。<br>比如 Animal(动物) 是一个抽象类，我们可以具体到一只狗跟一只羊，而狗跟羊就是具体的对象，他们有颜色属性，可以写，可以跑等行为状态。<br>区分：<br>•    类  − 定义了一件事物的抽象特点。类的定义包含了数据的形式以及对数据的操作。<br>•    对象 −  是类的实例。<br>•    成员变量 − 定义在类内部的变量。该变量的值对外是不可见的，但是可以通过成员函数访问，在类被实例化为对象后，该变量即可称为对象的属性。<br>•    成员函数 − 定义在类的内部，可用于访问对象的数据。<br>•    继承 − 继承性是子类自动共享父类数据结构和方法的机制，这是类之间的一种关系。在定义和实现一个类的时候，可以在一个已经存在的类的基础之上来进行，把这个已经存在的类所定义的内容作为自己的内容，并加入若干新的内容。<br>•    父类 − 一个类被其他类继承，可将该类称为父类，或基类，或超类。<br>•    子类 − 一个类继承其他类称为子类，也可称为派生类。<br>•    多态 − 多态性是指相同的函数或方法可作用于多种类型的对象上并获得不同的结果。不同的对象，收到同一消息可以产生不同的结果，这种现象称为多态性。<br>•    重载 − 简单说，就是函数或者方法有同样的名称，但是参数列表不相同的情形，这样的同名不同参数的函数或者方法之间，互相称之为重载函数或者方法。<br>•    抽象性 − 抽象性是指将具有一致的数据结构（属性）和行为（操作）的对象抽象成类。一个类就是这样一种抽象，它反映了与应用有关的重要性质，而忽略其他一些无关内容。任何类的划分都是主观的，但必须与具体的应用有关。<br>•    封装 − 封装是指将现实世界中存在的某个客体的属性与行为绑定在一起，并放置在一个逻辑单元内。<br>•    构造函数 − 主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中。<br>定义类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class phpClass &#123;&#x2F;&#x2F;定义类使用 class 关键字后加上类名再加上&#123;&#125;定义变量和方法</span><br><span class="line">  var $var1;&#x2F;&#x2F;var声明变量使用，也可以初始化值</span><br><span class="line">  var $var2 &#x3D; &quot;constant string&quot;;</span><br><span class="line">  </span><br><span class="line">  function myfunc ($arg1, $arg2) &#123;</span><br><span class="line">     [..]</span><br><span class="line">  &#125;</span><br><span class="line">  [..]</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类的声明class<ul>
+<li>对象实例化new</li>
+<li>对象的访问-&gt;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个类,利用class来声明一个类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">hello</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用new来实例化一个类,并将其附给变量$hello</span></span><br><span class="line">$hello = <span class="keyword">new</span> hello();</span><br><span class="line"><span class="comment">//给对象增加一些属性和方法</span></span><br><span class="line">$hello-&gt;name = <span class="string">&#x27;杨过&#x27;</span>;</span><br><span class="line">$hello-&gt;age = <span class="number">30</span>;</span><br><span class="line">$hello-&gt;hello1 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;我是一个方法&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//访问对象的属性或方法</span></span><br><span class="line"><span class="keyword">echo</span> $hello-&gt;name;</span><br><span class="line"><span class="keyword">echo</span> $hello-&gt;age;</span><br><span class="line"><span class="keyword">echo</span> call_user_func($hello-&gt;hello1);<span class="comment">//因为hello1是一个函数了，所以要使用回调来处理一下就是call_user_func()来处理</span></span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">&quot;content-type&quot;</span> content=<span class="string">&quot;text/html&quot;</span> charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>meta：meta是html语言head区的一个辅助性标签，位于文档的头部，不包含任何内容。 标签的属性定义了与文档相关联的名称/值对。meta元素可提供相关页面的元信息(meta-information)，比如针对搜索引擎和更新频度的描述和关键词。</p>
+<p>Content-Type，内容类型，一般是指网页中存在的Content-Type，用于定义网络文件的类型和网页的编码，决定文件接收方将以什么形式、什么编码读取这个文件，这就是经常看到一些Asp网页点击的结果却是下载到的一个文件或一张图片的原因。</p>
+<p>charset 属性规定在外部脚本文件中使用的字符编码。 如果外部文件中的字符编码与主文件中的编码方式不同,就要用到 charset属性。</p>
+<hr>
+<ul>
+<li>对象的三大特性：封装、继承、多态<ul>
+<li>封装就是将里面的数据进行私有化或者限制访问</li>
+<li>封装用到的三种方法：public公共的共享，private私有的，protected限制访问的</li>
+<li>为什么要封装呢？因为将封装起来的对象，使用公共的接口来访问，这样可以提供安全性。进行保护</li>
+<li>类中成员，可以直接使用$this来访问成员，可直接访问</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明一个类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">demo2</span> </span>&#123;</span><br><span class="line">    <span class="comment">//给对象两个公共属性</span></span><br><span class="line">    <span class="keyword">public</span> $name = <span class="string">&#x27;php中文网&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> $email = <span class="string">&#x27;php@php.cn&#x27;</span>;</span><br><span class="line">    <span class="comment">// 再给两个不是公共的属性</span></span><br><span class="line">    <span class="keyword">protected</span> $sex = <span class="number">1</span>;<span class="comment">//限制属性，可以在本类或者子类中访问</span></span><br><span class="line">    <span class="keyword">protected</span> $style;<span class="comment">//限制的属性，仅可以在本类或者子类中可以访问</span></span><br><span class="line">    <span class="keyword">private</span> $age;<span class="comment">//私有属性，只可以在本类中访问</span></span><br><span class="line">    <span class="comment">//声明类方法，创建公共接口</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">$this</span>-&gt;sex == <span class="number">0</span>) ? <span class="string">&#x27;男性&#x27;</span> : <span class="string">&#x27;女性&#x27;</span>;<span class="comment">//将受限制属性进行公共接口来访问</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">cbd</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">$this</span>-&gt;sex ==<span class="number">0</span>) ? <span class="keyword">$this</span>-&gt;getsex() : <span class="string">&#x27;保密&#x27;</span>;<span class="comment">//判断将私有属性也进行公共接口来访问</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$demo2 = <span class="keyword">new</span> demo2();</span><br><span class="line"><span class="keyword">echo</span> $demo2-&gt;name;</span><br><span class="line"><span class="keyword">echo</span> $demo2-&gt;email;</span><br><span class="line"><span class="keyword">echo</span> $demo2-&gt;abc();<span class="comment">//因为公共接口是一个函数，所以要不能像前面直接访问属性哪种方法来访问。这个访问的是一个方法，不是一个属性。</span></span><br><span class="line"><span class="keyword">echo</span> $demo2-&gt;cbd();</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/08/PHP%E7%9A%84%E8%AE%A4%E8%AF%863/" data-id="ckh8ttemm0000fotf2o9mhuwn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php语言的认识2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/01/php%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AE%A4%E8%AF%862/" class="article-date">
+  <time datetime="2020-11-01T15:42:33.183Z" itemprop="datePublished">2020-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PHP语言</p>
+<p>一.if与switch</p>
+<p><strong>1.if</strong><br>仅当指定条件成立时执行代码<br>if(条件）<br>{<br>代码<br>}<br>if…else有两个分支。<br><strong>2.if…else if…else</strong>在若干条件之一成立时执行一个代码块。类似于叠加条件，若正向不成立时反向成立，在与现行条件结合。<br><strong>3.switch</strong> 有选择地执行若干代码之一。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">switch</span>(n)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">case</span> label1:</span><br><span class="line">         n=label1;</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> label2:</span><br><span class="line">         n=label2;</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">         代码<span class="number">3</span>；</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>先将简单表达式n进行一次计算，将表达式的值与结构中每个case的值进行比较。用break来阻止跳入下一个case中继续执行。default语句用于不存在匹配时执行。</p>
+<p>二.函数学习</p>
+<p><strong>1.数组</strong><br>（1）array()函数用于创建数组。数组类型包括数值数组，关联数组等。且有自动分配ID键（从0开始）与人工分配ID键（各自定义不同的值）之分。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cars=<span class="keyword">array</span>(<span class="string">&quot;v&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;t&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$cars[<span class="number">0</span>]=<span class="string">&quot;1&quot;</span>;</span><br><span class="line">$cars[<span class="number">1</span>&#125;=<span class="string">&quot;2&quot;</span>;</span><br><span class="line">$cars[<span class="number">2</span>]=<span class="string">&quot;3&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>(2)count()获取数组长度，即表明数组中一共有几个空房间。<br>(3)关联数组：使用我分配数组的指定的键的数组<br>两种分配方式：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$age=<span class="keyword">array</span>(<span class="string">&quot;peter&quot;</span>=&gt;<span class="string">&quot;35&quot;</span>,<span class="string">&quot;ben&quot;</span>=&gt;<span class="string">&quot;37&quot;</span>,<span class="string">&quot;joe&quot;</span>=&gt;<span class="string">&quot;43&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$age[<span class="string">&#x27;peter&#x27;</span>]=<span class="string">&quot;35&quot;</span>;</span><br><span class="line"><span class="comment">//要知道此时加上的标点为单引号</span></span><br></pre></td></tr></table></figure>
+<p>(3)遍历关联数组：可用foreach循环(for each)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>($age <span class="keyword">as</span> $x =&gt;$x_value)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;key=&quot;</span>.$x.<span class="string">&quot;,value=&quot;</span>.$x_value;</span><br><span class="line"><span class="keyword">echo</span><span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>$x_value</code>为变量<code>$x</code>的值。</p>
+<p>有见到的函数为：<code>array_change_key_case()</code>表示其键的大写或小写的数组。</p>
+<p>三.数组排序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$cars=<span class="keyword">array</span>(<span class="string">&quot;v&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;t&quot;</span>);</span><br><span class="line">sort($cars);</span><br><span class="line">print_r($cars);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>print_r()此时用于输出数组。<br>但我对于为什么不用echo产生了疑惑。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">&quot;i like&quot;</span>.$cars[<span class="number">0</span>].<span class="string">&quot;,&quot;</span>.$cars[<span class="number">1</span>].<span class="string">&quot;and&quot;</span>.$cars[<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
+<p>在此处明明也可以用echo来输出数组。<br>echo / print与print_r与var_dump都具有输出功能。但echo与print是语言结构，不能作为表达式的一部分。而后两者都是函数，其区别是var_dump()返回表达式的类型与值，而print()仅返回效果。var_dump更便于阅读。<br>echo用于输出数值变量或字符串,但使用echo来输出引用变量时，如数组，仅输出数组的名字；而print_r(expression)输出一个数组，实际上expression的类型可为数组变量和引用变量。如果给出的是string,integer,或float将输出变量值本身；如果给出array将按一定格式显示键和元素。object与数组类似。</p>
+<p>升序与降序<br>对于普通数组：sort()升序；rsort()降序<br>对于关联数组：<br>                        对值：asort()升序；arsort()降序<br>                        对键：ksort()升序；krsort()降序</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/01/php%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AE%A4%E8%AF%862/" data-id="ckgzaassn0000mktfbwr8g384" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-对于php语法的初步了解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/01/%E5%AF%B9%E4%BA%8Ephp%E8%AF%AD%E6%B3%95%E7%9A%84%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/" class="article-date">
@@ -347,7 +457,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
     </div>
   </div>
 
@@ -360,6 +470,14 @@
       <ul>
         
           <li>
+            <a href="/2020/12/06/PHP%E5%AD%A6%E4%B9%A0%E5%B0%8F%E6%B5%8B2/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/06/PHP%E5%AD%A6%E4%B9%A0%E5%B0%8F%E6%B5%8B/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/29/%E5%AF%B9%E4%BA%8Ephp%E7%9A%84%E5%A4%8D%E4%B9%A0/">(no title)</a>
           </li>
         
@@ -369,14 +487,6 @@
         
           <li>
             <a href="/2020/11/22/mysql/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/22/mysql%E5%AD%A6%E4%B9%A0/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/16/%E6%9F%A5%E7%BC%BA%E8%A1%A5%E6%BC%8F/">(no title)</a>
           </li>
         
       </ul>
