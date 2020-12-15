@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-MySQL初探" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/08/MySQL%E5%88%9D%E6%8E%A2/" class="article-date">
+  <time datetime="2020-11-08T15:02:12.419Z" itemprop="datePublished">2020-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MySQL<br>首先在阅读的时候发现对于有些术语不太明白</p>
+<ul>
+<li>API : 英文全称Application Programming Interface，翻译为“应用程序编程接口”。是一些预先定义的函数，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又无需访问源码，或理解内部工作机制的细节。——百度百科<br>我理解为数据连接的窗口，沟通资料共享。</li>
+</ul>
+<ul>
+<li>数据结构：具体指同一类数据元素中，各元素之间的相互关系，包括三个组成成分，数据的逻辑结构，数据的存储结构和数据运算结构。一般认为，一个数据结构是由数据元素依据某种逻辑联系组织起来的。对数据元素间逻辑关系的描述称为数据的逻辑结构;数据必须在计算机内存储，数据的存储结构是数据结构的实现形式，是其在计算机内的表示;此外讨论一个数据结构必须同时讨论在该类数据上执行的运算才有意义。一个逻辑数据结构可以有多种存储结构，且各种存储结构影响数据处理的效率。。数据的逻辑结构:指反映数据元素之间的逻辑关系的数据结构，其中的逻辑关系是指数据元素之间的前后件关系，而与他们在计算机中的存储位置无关。<br>逻辑结构包括:</li>
+</ul>
+<p>1.集合结构<br>数据结构中的元素之间除了”同属一个集合” 的相互关系外，别无其他关系;<br>2.线性结构<br>数据结构中的元素存在一对一的相互关系;<br>3.树形结构<br>数据结构中的元素存在一对多的相互关系;<br>4.图形结构<br>数据结构中的元素存在多对多的相互关系。</p>
+<ul>
+<li>RDBMS 术语<br>数据库: 数据库是一些关联表的集合。<br>数据表: 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。<br>列: 一列(数据元素) 包含了相同类型的数据, 例如邮政编码的数据。<br>行：一行（=元组，或记录）是一组相关的数据，例如一条用户订阅的数据。<br>冗余：存储两倍数据，冗余降低了性能，但提高了数据的安全性。在设计数据库时，某一字段属于一个表，但它又同时出现在另一个或多个表，且完全等同于它在其本来所属表的意义表示，那么这个字段就是一个冗余字段。<br>表的重复<br>为了数据安全的需要制作备份表，当主表被破坏时可用此恢复数据。分布式数据库为减少数据通讯开销也常重复放表，这种数据冗余在这里是必需数据冗余，不能删除。若是因其他原因产生的非必要的重复表则应予以删除。<br>属性重复<br>有不同表的属性重复和同一表内属性重复2种情况：<br>(1)  不同表中属性重复常用来建立表之间联系，这只需要一个公共属性，这是必需数据冗余，不能删除；各表间的多于一个的属性应当删除。<br>(2)  同一表内有相同属性内容的多个属性，若非数据安全检查的需要，应删除之。<br>主键：主键是唯一的。一个数据表中只能包含一个主键。你可以使用主键来查询数据。主键值必须唯一标识表中的每一行，且不能为 NULL，即表中不可能存在有相同主键值的两行数据。这是唯一性原则。<br>一个字段名只能在联合主键字段表中出现一次。<br>联合主键不能包含不必要的多余字段。当把联合主键的某一字段删除后，如果剩下的字段构成的主键仍然满足唯一性原则，那么这个联合主键是不正确的。这是最小化原则。<br>外键：外键用于关联两个表。<br>复合键：复合键（组合键）将多个列作为一个索引键，一般用于复合索引。<br>索引：使用索引可快速访问数据库表中的特定信息。索引是对数据库表中一列或多列的值进行排序的一种结构。类似于书籍的目录。<br>参照完整性: 参照的完整性要求关系中不允许引用不存在的实体。与实体完整性是关系模型必须满足的完整性约束条件，目的是保证数据的一致性。</li>
+</ul>
+<hr>
+<p><strong>什么是数据库？</strong><br>数据库（Database）是按照数据结构来组织、存储和管理数据的仓库。<br>每个数据库都有一个或多个不同的 API 用于创建，访问，管理，搜索和复制所保存的数据。<br>我们也可以将数据存储在文件中，但是在文件中读写数据速度相对较慢。<br>所以，现在我们使用关系型数据库管理系统（RDBMS）来存储和管理大数据量。所谓的关系型数据库，是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方法来处理数据库中的数据。<br>RDBMS 即关系数据库管理系统(Relational Database Management System)的特点：<br>1.数据以表格的形式出现<br>2.每行为各种记录名称<br>3.每列为记录名称所对应的数据域<br>4.许多的行和列组成一张表单<br>5.若干的表单组成database</p>
+<hr>
+<p>PHP mysqli 函数格式如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysqli_function(value,value,...);</span><br><span class="line">mysqli_connect($connect);<span class="comment">//PHP 提供了 mysqli_connect() 函数来连接数据库。</span></span><br><span class="line">mysqli_query($connect,<span class="string">&quot;SQL 语句&quot;</span>);</span><br><span class="line"><span class="comment">//面向对象风格的写法：mysqli::query( string $query [, int $resultmode = MYSQLI_STORE_RESULT ] )</span></span><br><span class="line"><span class="comment">//面向过程风格的写法：mysqli_query( mysqli $link , string $query [, int $resultmode = MYSQLI_STORE_RESULT ] )</span></span><br><span class="line"><span class="comment">//$link：表示由 mysqli_connect() 函数返回的数据库连接；</span></span><br><span class="line"><span class="comment">//$query：要执行的 SQL 语句；</span></span><br><span class="line"><span class="comment">//$resultmode：可选参数，用来修改函数的行为。可以是下列值的任意一个：</span></span><br><span class="line">  <span class="comment">//MYSQLI_USE_RESULT（如果需要查询大量数据，使用这个）；</span></span><br><span class="line">  <span class="comment">//MYSQLI_STORE_RESULT（默认值）。</span></span><br><span class="line">mysqli_fetch_array()</span><br><span class="line">mysqli_close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$retval = mysqli_function(value, [value,...]);</span><br><span class="line"><span class="keyword">if</span>( !$retval )<span class="comment">//ratval为返回值。！为逻辑非运算。</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">die</span> ( <span class="string">&quot;相关错误信息&quot;</span> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 其他 MySQL 或 PHP 语句</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/08/MySQL%E5%88%9D%E6%8E%A2/" data-id="ckh98xhpu0000a8tf8ho5h4ya" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-PHP的认识3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/08/PHP%E7%9A%84%E8%AE%A4%E8%AF%863/" class="article-date">
@@ -438,7 +483,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -449,15 +494,29 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/something/" rel="tag">something</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/something/" style="font-size: 10px;">something</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
     </div>
   </div>
 
@@ -468,6 +527,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/12/15/less1%E7%B1%BB%E7%9A%84%E5%AD%A6%E4%B9%A0%20(1)/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2020/12/06/PHP%E5%AD%A6%E4%B9%A0%E5%B0%8F%E6%B5%8B2/">(no title)</a>
@@ -483,10 +546,6 @@
         
           <li>
             <a href="/2020/11/29/less-1%E7%9A%84%E5%88%9D%E6%AC%A1%E5%B0%9D%E8%AF%95/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/22/mysql/">(no title)</a>
           </li>
         
       </ul>
