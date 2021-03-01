@@ -64,6 +64,35 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-学习2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/01/%E5%AD%A6%E4%B9%A02/" class="article-date">
+  <time datetime="2021-03-01T08:47:17.685Z" itemprop="datePublished">2021-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>二。漏洞挖掘WEB<br>WEB：OS server(linux /windows2012)加装web应用程序提供网页服务<br>（中间件、容器）<br>在services分支中<br>mysql web rop<br>web中间件有漏洞如：sql注入，上传文件漏洞，XSS，包含漏洞等<br>cms 论坛 电商平台 业务办理<br>web应用前后台：<br>前台：面向访问用户<br>后台：管理网站前台的一系列操作<br>DVWA源码</p>
+<p>webshell网页木马文件：网页文件获得一个shell环境（可以敲命令）即网页后门文件<br>上穿一个php<br>文件上传功能：没有校验<br>提交文件与客户端<br>生成临时文件<br>服务端代码处理（前后端<br>system(  ）:<br>passthru(）：<br>D:\CmsToolClient\Running\Release\Unicode\phpStudy20161103\WWW</p>
+<p>less-1<br>在less1时先用?id=1’试探，然后发现<br>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘’1’’ LIMIT 0,1’ at line 1<br>输入内容会变为’1’’ LIMIT 0,1</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/01/%E5%AD%A6%E4%B9%A02/" data-id="cklqcat5i00000stfcey29hy1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-学习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/01/%E5%AD%A6%E4%B9%A0/" class="article-date">
@@ -485,60 +514,6 @@
 
 
   
-    <article id="post-MySQL基本操作2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/10/MySQL%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/" class="article-date">
-  <time datetime="2020-11-10T13:33:58.374Z" itemprop="datePublished">2020-11-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.创建数据库</p>
-<hr>
-<p>在MYSQL登陆服务后，使用用create命令创建数据库。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">creat database 数据库名；</span><br></pre></td></tr></table></figure>
-<p>简单过程：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@host]<span class="comment"># mysql -u root -p</span></span><br><span class="line">ENTER passward:***** <span class="comment">#登陆后进入终端</span></span><br><span class="line">mysql&gt; create DATABASE RUNOOB;</span><br></pre></td></tr></table></figure>
-<p>mysql -u 用户名 -p 密码 是连接数据库服务器的命令。要求你输入自己连接数据库的用户名和密码。<br>考虑密码如果直接明文写在这条命令行上，有些不方便（怕被别人看到），可以只输入：mysql -u 用户名 -p 然后回车，此时提示你输入密码，这时候输入的密码就不再是明文的了。</p>
-<hr>
-<p>使用PHP脚本创建数据库<br>PHP 使用 mysqli_query 函数来创建或者删除 MySQL 数据库。<br>该函数有两个参数，在执行成功时返回 TRUE，否则返回 FALSE。(bool布尔型）</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myaqli_query(connection,query,resultmode);</span><br></pre></td></tr></table></figure>
-<p>connection 是必须写的，规定要使用的MySQL连接。<br>query 是必须写的，规定查询字符串。为了在数据库中寻找某一特定文件、网站、记录或一系列记录，由搜索引擎或数据库送出的消息。<br>mysql_query() 函数执行一条 MySQL 查询。且在query规定要发送的 SQL 查询。注释：查询字符串不应以分号结束。（不太明白）<br>实例：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$dbhost = <span class="string">&#x27;localhost&#x27;</span>;  <span class="comment">// mysql服务器主机地址，定义为有值变量。</span></span><br><span class="line">$dbuser = <span class="string">&#x27;root&#x27;</span>;            <span class="comment">// mysql用户名</span></span><br><span class="line">$dbpass = <span class="string">&#x27;123456&#x27;</span>;          <span class="comment">// mysql用户名密码</span></span><br><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line"><span class="keyword">if</span>(! $conn )</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">die</span>(<span class="string">&#x27;连接错误: &#x27;</span> . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;连接成功&lt;br /&gt;&#x27;</span>;</span><br><span class="line">$sql = <span class="string">&#x27;CREATE DATABASE RUNOOB&#x27;</span>;</span><br><span class="line">$retval = mysqli_query($conn,$sql );</span><br><span class="line"><span class="keyword">if</span>(! $retval )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;创建数据库失败: &#x27;</span> . mysqli_error($conn));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;数据库 RUNOOB 创建成功\n&quot;</span>;</span><br><span class="line">mysqli_close($conn);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>$dbhost, $dbuser, $dbpass</code>三个变量的定义赋值，便于修改。<br>用<code>if(! $conn ) &#123;   die(&#39;连接错误: &#39; . mysqli_error($conn)); &#125;</code>来说明在输入账户密码错误时的情况，而正确则输出<code>echo &#39;连接成功&lt;br /&gt;&#39;;</code><br><code>$retval</code>在上文中用来查询是否有创建某数据库成功的记录。</p>
-<hr>
-<p>2.删除数据库</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$conn = mysqli_connect($dbhost, $dbuser, $dbpass);</span><br><span class="line">$sql = <span class="string">&#x27;DROP DATABASE RUNOOB&#x27;</span>;</span><br><span class="line">$retval = mysqli_query( $conn, $sql );</span><br></pre></td></tr></table></figure>
-
-<p>也可以使用 mysql <code>mysqladmin</code> 命令在终端来执行删除命令。</p>
-<p>以下实例删除数据库 RUNOOB(该数据库在前一章节已创建)：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@host]<span class="comment"># mysqladmin -u root -p drop RUNOOB</span></span><br><span class="line">Enter password:******</span><br></pre></td></tr></table></figure>
-<hr>
-<p>3.选择数据库<br>选取了数据库 RUNOOB:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@host]<span class="comment"># mysql -u root -p</span></span><br><span class="line">Enter password:******</span><br><span class="line">mysql&gt; <span class="keyword">use</span> <span class="title">RUNOOB</span>;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
-<p>注意:所有的数据库名，表名，表字段都是区分大小写的。所以你在使用SQL命令时需要输入正确的名称。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqli_select_db(connection,dbname);</span><br><span class="line">mysqli_select_db($conn, <span class="string">&#x27;RUNOOB&#x27;</span> );</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/10/MySQL%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/" data-id="ckhc0o6pr0000uwtf1nb10iyn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -589,6 +564,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/01/%E5%AD%A6%E4%B9%A02/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/01/%E5%AD%A6%E4%B9%A0/">(no title)</a>
           </li>
         
@@ -602,10 +581,6 @@
         
           <li>
             <a href="/2020/12/06/PHP%E5%AD%A6%E4%B9%A0%E5%B0%8F%E6%B5%8B/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/29/%E5%AF%B9%E4%BA%8Ephp%E7%9A%84%E5%A4%8D%E4%B9%A0/">(no title)</a>
           </li>
         
       </ul>
